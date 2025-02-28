@@ -6,10 +6,8 @@
 		{
 			//Szazalek();
 			//Verseny();
-
-			ViziAllat delfin = new();
-            Console.WriteLine(delfin);
-        }
+			Allatkert.ListFaj();
+		}
 
 		static void Verseny()
 		{
