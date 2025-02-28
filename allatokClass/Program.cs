@@ -4,9 +4,12 @@
 	{
 		static void Main(string[] args)
 		{
-			Szazalek();
-			Verseny();
-		}
+			//Szazalek();
+			//Verseny();
+
+			ViziAllat delfin = new();
+            Console.WriteLine(delfin);
+        }
 
 		static void Verseny()
 		{

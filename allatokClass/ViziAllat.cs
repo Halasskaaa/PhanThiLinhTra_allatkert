@@ -13,17 +13,22 @@ namespace allatokClass
 		private int seb;
 		private int suly;
 
-		public ViziAllat(string nev, string faj, int seb, int suly)
+		public ViziAllat()
 		{
-			this.nev = "Ada Wong";
-			this.faj = "delfin";
-			this.seb = 60;
-			this.suly = 175;
+			nev = "Ada Wong";
+			faj = "delfin";
+			seb = 60;
+			suly = 175;
 		}
 
 		public string Nev { get => nev; set => nev = value; }
 		public string Faj { get => faj; set => faj = value; }
 		public int Seb { get => seb; set => seb = value; }
 		public int Suly { get => suly; set => suly = value; }
+
+		public override string ToString()
+		{
+			return $"Az állat neve: {nev}, faja: {faj}, sebessége: {seb}, súlya: {suly}";
+		}
 	}
 }

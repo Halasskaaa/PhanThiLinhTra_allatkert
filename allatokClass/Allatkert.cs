@@ -9,6 +9,6 @@ namespace allatokClass
 {
 	internal class Allatkert
 	{
-
+		
 	}
 }
