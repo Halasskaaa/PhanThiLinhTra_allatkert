@@ -41,36 +41,62 @@ namespace allatokClass
             }
         }
 
-        public void Verseny()
+        public void ListFaj()
         {
-            Console.WriteLine("Verseny indul!");
+            Console.WriteLine("Állatkert jelenlegi állapota:");
 
-            List<int> positions = new List<int>(new int[allatLista.Count]);
+            int totalSpace = 15;  // Maximum number of animals the zoo can hold
+            int filledSpace = allatLista.Count;
 
-            int maxSteps = 10;
-            for (int step = 0; step < maxSteps; step++)
+            double filledPercentage = (double)filledSpace / totalSpace * 100;
+            Console.WriteLine($"Az állatkert megtelt: {filledPercentage}% ({filledSpace}/{totalSpace} állat)");
+
+            Console.Write("Állatkerti térképe: ");
+            for (int i = 0; i < totalSpace; i++)
             {
-                Console.Clear();
-
-                for (int i = 0; i < allatLista.Count; i++)
-                {
-                    positions[i] += allatLista[i].Seb;
-                }
-
-                foreach (var animal in allatLista)
-                {
-                    int position = positions[allatLista.IndexOf(animal)];
-                    Console.SetCursorPosition(0, allatLista.IndexOf(animal));
-                    Console.WriteLine($"{animal.Nev}: " + new string('O', position));
-                }
-
-                Thread.Sleep(500);
+                if (i < filledSpace)
+                    Console.BackgroundColor = ConsoleColor.Green;
+                else
+                    Console.BackgroundColor = ConsoleColor.Black;
+                Console.Write(" ");
             }
-
-            int maxPosition = positions.Max();
-            int winnerIndex = positions.IndexOf(maxPosition);
-            Console.WriteLine("\nA verseny győztese: " + allatLista[winnerIndex].Nev);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine();
         }
+
+        public void Verseny()
+{
+    Console.WriteLine("Verseny indul!");
+
+    List<int> positions = new List<int>(new int[allatLista.Count]);
+    int maxSteps = 10;
+    int raceDistance = 50;
+
+    for (int step = 0; step < maxSteps; step++)
+    {
+        Console.Clear();
+
+        for (int i = 0; i < allatLista.Count; i++)
+        {
+            int moveDistance = (allatLista[i].Seb * raceDistance) / 100;
+            positions[i] += moveDistance;
+        }
+
+        for (int i = 0; i < allatLista.Count; i++)
+        {
+            int position = positions[i];
+            Console.SetCursorPosition(0, i);
+            Console.WriteLine($"{allatLista[i].Nev}: " + new string('O', position));
+        }
+
+        Thread.Sleep(500);
+    }
+
+    int maxPosition = positions.Max();
+    int winnerIndex = positions.IndexOf(maxPosition);
+    Console.WriteLine("\nA verseny győztese: " + allatLista[winnerIndex].Nev);
+}
+
 
         public void AllatokInfo()
         {
