@@ -6,7 +6,10 @@
 		{
 			//Szazalek();
 			//Verseny();
-			Allatkert.ListFaj();
+			
+			Allatkert allatkert = new Allatkert();
+            		Allatkert.ListFaj();
+            		Allatkert.Verseny();
 		}
 
 		static void Verseny()
