@@ -21,11 +21,6 @@ namespace allatokClass
 			suly = 175;
 		}
 
-		public string Nev { get => nev; set => nev = value; }
-		public string Faj { get => faj; set => faj = value; }
-		public int Seb { get => seb; set => seb = value; }
-		public int Suly { get => suly; set => suly = value; }
-
 		public override string ToString()
 		{
 			return $"Az állat neve: {nev}, faja: {faj}, sebessége: {seb}, súlya: {suly}";
