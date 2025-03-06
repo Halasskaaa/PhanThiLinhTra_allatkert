@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace allatokClass
 {
-	internal class ViziAllat
+	internal class ViziAllat : IAllat
 	{
-		private string nev;
-		private string faj;
-		private int seb;
-		private int suly;
+		public string Nev { get; set; }
+        	public string Faj { get; set; }
+	        public int Seb { get; set; }
+        	public int Suly { get; set; }
 
 		public ViziAllat()
 		{
