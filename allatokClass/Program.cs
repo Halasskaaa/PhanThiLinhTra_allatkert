@@ -8,8 +8,8 @@
 			//Verseny();
 			
 			Allatkert allatkert = new Allatkert();
-            		Allatkert.ListFaj();
-            		Allatkert.Verseny();
+            		allatkert.ListFaj();
+            		allatkert.Verseny();
 		}
 
 		static void Verseny()
