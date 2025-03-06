@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,7 +44,7 @@ namespace allatokClass
         {
             Console.WriteLine("Állatkert jelenlegi állapota:");
 
-            int totalSpace = 15;  // Maximum number of animals the zoo can hold
+            int totalSpace = 15;
             int filledSpace = allatLista.Count;
 
             double filledPercentage = (double)filledSpace / totalSpace * 100;
@@ -65,38 +64,35 @@ namespace allatokClass
         }
 
         public void Verseny()
-{
-    Console.WriteLine("Verseny indul!");
-
-    List<int> positions = new List<int>(new int[allatLista.Count]);
-    int maxSteps = 10;
-    int raceDistance = 50;
-
-    for (int step = 0; step < maxSteps; step++)
-    {
-        Console.Clear();
-
-        for (int i = 0; i < allatLista.Count; i++)
         {
-            int moveDistance = (allatLista[i].Seb * raceDistance) / 100;
-            positions[i] += moveDistance;
+            Console.WriteLine("Verseny indul!");
+
+            List<int> positions = new List<int>(new int[allatLista.Count]);
+            List<int> speed = allatLista.Select(a => a.Seb).ToList();
+
+            int maxDistance = 100;
+            int stepDuration = 1000;
+
+            while (positions.Max() < maxDistance)
+            {
+                Console.Clear();
+                for (int i = 0; i < allatLista.Count; i++)
+                {
+                    positions[i] += (speed[i] / 10);
+                }
+
+                for (int i = 0; i < allatLista.Count; i++)
+                {
+                    Console.SetCursorPosition(positions[i], i);
+                    Console.Write($"{allatLista[i].Nev[0]}");
+                }
+
+                Thread.Sleep(stepDuration);
+            }
+
+            int winnerIndex = positions.IndexOf(positions.Max());
+            Console.WriteLine($"\nA verseny győztese: {allatLista[winnerIndex].Nev}, Sebesség: {allatLista[winnerIndex].Seb}");
         }
-
-        for (int i = 0; i < allatLista.Count; i++)
-        {
-            int position = positions[i];
-            Console.SetCursorPosition(0, i);
-            Console.WriteLine($"{allatLista[i].Nev}: " + new string('O', position));
-        }
-
-        Thread.Sleep(500);
-    }
-
-    int maxPosition = positions.Max();
-    int winnerIndex = positions.IndexOf(maxPosition);
-    Console.WriteLine("\nA verseny győztese: " + allatLista[winnerIndex].Nev);
-}
-
 
         public void AllatokInfo()
         {
