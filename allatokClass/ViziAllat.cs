@@ -8,10 +8,10 @@ namespace allatokClass
 {
 	internal class ViziAllat : IAllat
 	{
-		public string Nev { get; set; }
-        	public string Faj { get; set; }
-	        public int Seb { get; set; }
-        	public int Suly { get; set; }
+		public string nev { get; set; }
+        	public string faj { get; set; }
+	        public int seb { get; set; }
+        	public int suly { get; set; }
 
 		public ViziAllat()
 		{
